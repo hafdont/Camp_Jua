@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Jua Education, Arts & Healing Centre</title>
+  <link rel="icon" type="image/png" href="./static/img/logo-removebg-preview.png">
+  
+  <!-- Fonts & Core Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.css">
+  
+  <style>
+    :root {
+      --bg-dark: #0a0a0c;
+      --text-light: #f4f4f6;
+      --accent-gold: #e5a93c;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* 1. CINEMATIC HERO & GSAP JUA TITLE */
+    .hero-container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .jua-title {
+      font-size: clamp(5rem, 15vw, 18rem);
+      font-weight: 800;
+      letter-spacing: 0.5rem;
+      line-height: 1;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .jua-title span {
+      display: inline-block;
+      will-change: transform;
+    }
+
+    .philosophy-text {
+      position: absolute;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 300;
+      opacity: 0;
+      text-align: center;
+    }
+
+    /* 2. WIDENED COLLAGE DESCRIPTION */
+    .about-collage-section {
+      padding: 100px 0;
+    }
+
+    .selected-area {
+      min-height: 450px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .selected-image {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 4 / 5;
+      border-radius: 25px;
+      overflow: hidden;
+      background: #1a1a1e;
+    }
+
+    .selected-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 30;
+      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, background 0.2s ease;
+    }
+
+    .about.show-selected .back-button {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .collage-area {
+      position: relative;
+      height: 500px;
+    }
+
+    .photo {
+      position: absolute;
+      width: 180px;
+      height: 220px;
+      padding: 8px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.6s cubic-bezier(.22, .61, .36, 1), opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .photo-1 { top: 20px; left: 20px; transform: rotate(-12deg); }
+    .photo-2 { top: 10px; left: 150px; transform: rotate(8deg); }
+    .photo-3 { top: 120px; left: 60px; transform: rotate(-4deg); }
+    .photo-4 { top: 210px; left: 180px; transform: rotate(12deg); }
+    .photo-5 { top: 250px; left: 20px; transform: rotate(-8deg); }
+
+    .photo:hover { transform: scale(1.08) rotate(0deg); z-index: 20; }
+    .collage-area.selected .photo { opacity: 0; pointer-events: none; }
+
+    /* WIDENED DESCRIPTION FIX (600px max-width) */
+    #description {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    #description h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--accent-gold);
+    }
+
+    #description p {
+      margin: 0 auto;
+      max-width: 560px;
+      font-family: "Manrope", sans-serif;
+      font-size: 17px;
+      line-height: 1.8;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .description-hide {
+      opacity: 0 !important;
+      transform: translateY(20px) !important;
+    }
+
+    /* 3. THREE WORLDS SECTION */
+    .section-title {
+      font-size: 3rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .world-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px 30px;
+      height: 100%;
+      backdrop-filter: blur(10px);
+    }
+
+    /* 4. HORIZONTAL SCROLL: CASE STUDIES */
+    .horizontal-section {
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .horizontal-strip {
+      display: flex;
+      gap: 40px;
+      padding-left: 10vw;
+    }
+
+    .case-card {
+      width: 450px;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* 5. TIMELINE SECTION */
+    .timeline-strip {
+      display: flex;
+      gap: 50px;
+      padding-left: 10vw;
+    }
+
+    .timeline-node {
+      width: 280px;
+      flex-shrink: 0;
+      border-top: 2px solid var(--accent-gold);
+      padding-top: 20px;
+    }
+
+    /* 6. LEARNING TRACKS */
+    .track-card {
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 4px solid var(--accent-gold);
+      border-radius: 0 16px 16px 0;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. CINEMATIC HERO (GSAP PINNED TEXT ANIMATION) -->
+  <section class="hero-container" id="hero">
+    <div class="jua-title">
+      <span class="letter-j">J</span>
+      <span class="letter-u">U</span>
+      <span class="letter-a">A</span>
+    </div>
+    <div class="philosophy-text">
+      KNOWING <span style="color: var(--accent-gold);">/</span> THE SUN
+    </div>
+  </section>
+
+  <!-- 2. COLLAGE & WIDENED DESCRIPTION -->
+  <section class="container about-collage-section about">
+    <div class="row align-items-center">
+      
+      <!-- COLUMN 1: Selected image -->
+      <div class="col-lg-4 selected-area">
+        <button id="backButton" class="back-button">← View all</button>
+        <div id="selectedImage" class="selected-image">
+          <div class="d-flex h-100 justify-content-center align-items-center text-muted">Select a photo</div>
+        </div>
+      </div>
+
+      <!-- COLUMN 2: Collage -->
+      <div class="col-lg-4 collage-area my-5 my-lg-0">
+        <div class="photo photo-1" data-title="Nature" data-text="A beautiful escape into nature, surrounded by trees, fresh air and peaceful scenery." data-image="images/nature.jpg">
+          <img src="images/nature.jpg" alt="Nature">
+        </div>
+        <div class="photo photo-2" data-title="Adventure" data-text="Moments of adventure, exploration and discovering something new." data-image="images/adventure.jpg">
+          <img src="images/adventure.jpg" alt="Adventure">
+        </div>
+        <div class="photo photo-3" data-title="Water" data-text="The calm and refreshing feeling of being close to the water." data-image="images/water.jpg">
+          <img src="images/water.jpg" alt="Water">
+        </div>
+        <div class="photo photo-4" data-title="Wildlife" data-text="A closer look at the wild and the incredible creatures that inhabit it." data-image="images/wildlife.jpg">
+          <img src="images/wildlife.jpg" alt="Wildlife">
+        </div>
+        <div class="photo photo-5" data-title="Mau Mau Camp" data-text="Mau Mau Camp provided space for peace and building for Ukooflani Mau Mau members. It was a solace community meeting space with library, study space, film viewings, and recording studio." data-image="images/people.jpg">
+          <img src="images/people.jpg" alt="Mau Mau Camp">
+        </div>
+      </div>
+
+      <!-- COLUMN 3: Widened Description (Max Width 600px) -->
+      <div class="col-lg-4 description-area">
+        <div id="description">
+          <h2>Camp Jua</h2>
+          <p>Explore the different experiences that make Camp Jua special. Click any photo in the collage to view details and history.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. THREE WORLDS -->
+  <section class="container py-5 my-5">
+    <h2 class="section-title">THE THREE WORLDS</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="world-card gsap-card">
+          <h3 class="h4 text-warning mb-3">Jua Academy</h3>
+          <p class="text-secondary">Global education learning community of youth and college development partners, higher education institutions, and leadership programs.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="world-card gsap-card">
+          <h3 class="h4 text-warning mb-3">Jua Mazingira</h3>
+          <p class="text-secondary">Environmental responsibility. Ukweli freedom school programs connecting cultural, political, and social dialogue for youth globally.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="world-card gsap-card">
+          <h3 class="h4 text-warning mb-3">Black Star Liner</h3>
+          <p class="text-secondary">Global service & experiential learning, travel/study abroad, mentoring, job shadowing, internships, and career development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CASE STUDIES (HORIZONTAL SCROLL) -->
+  <section class="horizontal-section" id="case-studies-section">
+    <div>
+      <h2 class="section-title text-start px-5 ms-5">CASE STUDIES</h2>
+      <div class="horizontal-strip" id="case-studies-strip">
+        <div class="case-card">
+          <span class="badge bg-warning text-dark mb-2">Tanzania</span>
+          <h3>UAACC Arusha</h3>
+          <p class="text-secondary mt-3">United African Alliance Community Center focusing on arts, culture, and youth empowerment in East Africa.</p>
+        </div>
+        <div class="case-card">
+          <span class="badge bg-warning text-dark mb-2">Kenya</span>
+          <h3>Paa Ya Paa Kiambu</h3>
+          <p class="text-secondary mt-3">Historic Kenyan arts center fostering indigenous art forms, social engagement, and community reflection.</p>
+        </div>
+        <div class="case-card">
+          <span class="badge bg-warning text-dark mb-2">Kenya</span>
+          <h3>One Vibe Kisumu</h3>
+          <p class="text-secondary mt-3">Community center empowering youth through music, critical thinking, and sustainable social programs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. RIFT VALLEY LAND SITE -->
+  <section class="container py-5 my-5 text-center">
+    <div class="py-5 px-4 rounded-4" style="background: linear-gradient(180deg, rgba(229,169,60,0.1) 0%, rgba(10,10,12,1) 100%);">
+      <h2 class="display-5 fw-bold mb-3">THE LAND</h2>
+      <p class="lead max-w-600 mx-auto text-secondary" style="max-width: 650px;">
+        The center sits overlooking the Great Rift Valley in Naivasha County — rural farmland in the Kenyan countryside ideal for vocational reflection, cultural exchange, and retreats.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. ANIMATED 2016 TIMELINE -->
+  <section class="horizontal-section" id="timeline-section">
+    <div>
+      <h2 class="section-title text-start px-5 ms-5">DEVELOPMENT TIMELINE</h2>
+      <div class="timeline-strip" id="timeline-strip">
+        <div class="timeline-node">
+          <h4 class="text-warning">JAN 2016</h4>
+          <p class="text-secondary">Strategic planning, project timeline, budget, outcomes, setup US/Kenya bank accounts.</p>
+        </div>
+        <div class="timeline-node">
+          <h4 class="text-warning">FEB - MAR</h4>
+          <p class="text-secondary">Build art inventory, $3,000 seed investment, order inventory from Kenya.</p>
+        </div>
+        <div class="timeline-node">
+          <h4 class="text-warning">APR - JUL</h4>
+          <p class="text-secondary">Web marketing online inventory site, Etsy/FB expansion, vending exhibitions.</p>
+        </div>
+        <div class="timeline-node">
+          <h4 class="text-warning">AUG - SEP</h4>
+          <p class="text-secondary">Open house event & Puyallup Fair community showcase.</p>
+        </div>
+        <div class="timeline-node">
+          <h4 class="text-warning">DEC 2016</h4>
+          <p class="text-secondary">Travel to Kenya site to initiate land development & guard house phase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. LEARNING TRACKS -->
+  <section class="container py-5 my-5">
+    <h2 class="section-title">UKWELI SCHOLARS TRACKS</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="track-card">
+          <h4 class="text-warning">Ages 14 & Under</h4>
+          <p class="mb-0 text-secondary">Foundational engagement, cultural grounding, and nature exploration.</p>
+        </div>
+        <div class="track-card">
+          <h4 class="text-warning">Ages 14 — 18</h4>
+          <p class="mb-0 text-secondary">College prep & Freedom School co-curricular programs.</p>
+        </div>
+        <div class="track-card">
+          <h4 class="text-warning">Ages 18 — 21</h4>
+          <p class="mb-0 text-secondary">Leadership, vocation, mentoring, and career development prep.</p>
+        </div>
+        <div class="track-card">
+          <h4 class="text-warning">Ages 21+</h4>
+          <p class="mb-0 text-secondary">Lifelong learning, community service learning, and leadership development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // 1. LENIS SMOOTH SCROLL
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Sync GSAP with Lenis Scroll
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 2. HERO GSAP PIN & TEXT TRANSFORM (J-U-A -> KNOWING / THE SUN)
+    const heroTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top top",
+        end: "+=150%",
+        scrub: 1,
+        pin: true
+      }
+    });
+
+    heroTl
+      .to(".letter-j", { x: -200, opacity: 0 }, 0)
+      .to(".letter-a", { x: 200, opacity: 0 }, 0)
+      .to(".letter-u", { scale: 0.2, opacity: 0 }, 0)
+      .to(".philosophy-text", { opacity: 1, scale: 1.1 }, 0.3);
+
+    // 3. COLLAGE JS LOGIC
+    const photos = document.querySelectorAll(".photo");
+    const collage = document.querySelector(".collage-area");
+    const selectedImage = document.getElementById("selectedImage");
+    const description = document.getElementById("description");
+    const backButton = document.getElementById("backButton");
+    const aboutSection = document.querySelector(".about");
+
+    photos.forEach(photo => {
+      photo.addEventListener("click", () => {
+        const image = photo.dataset.image;
+        const title = photo.dataset.title;
+        const text = photo.dataset.text;
+
+        collage.classList.add("selected");
+        aboutSection.classList.add("show-selected");
+        selectedImage.innerHTML = `<img src="${image}" alt="${title}">`;
+
+        description.classList.add("description-hide");
+        setTimeout(() => {
+          description.innerHTML = `<h2>${title}</h2><p>${text}</p>`;
+          description.classList.remove("description-hide");
+        }, 300);
+      });
+    });
+
+    backButton.addEventListener("click", () => {
+      selectedImage.innerHTML = `<div class="d-flex h-100 justify-content-center align-items-center text-muted">Select a photo</div>`;
+      aboutSection.classList.remove("show-selected");
+      collage.classList.remove("selected");
+
+      description.classList.add("description-hide");
+      setTimeout(() => {
+        description.innerHTML = `<h2>Camp Jua</h2><p>Explore the different experiences that make Camp Jua special. Click any photo in the collage to view details and history.</p>`;
+        description.classList.remove("description-hide");
+      }, 300);
+    });
+
+    // 4. HORIZONTAL SCROLL FOR CASE STUDIES
+    const caseStrip = document.getElementById("case-studies-strip");
+    gsap.to(caseStrip, {
+      x: () => -(caseStrip.scrollWidth - window.innerWidth + 100),
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#case-studies-section",
+        start: "top top",
+        end: () => "+=" + caseStrip.scrollWidth,
+        scrub: 1,
+        pin: true
+      }
+    });
+
+    // 5. HORIZONTAL SCROLL FOR TIMELINE
+    const timelineStrip = document.getElementById("timeline-strip");
+    gsap.to(timelineStrip, {
+      x: () => -(timelineStrip.scrollWidth - window.innerWidth + 100),
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#timeline-section",
+        start: "top top",
+        end: () => "+=" + timelineStrip.scrollWidth,
+        scrub: 1,
+        pin: true
+      }
+    });
+
+    // 6. CARD FADE-IN REVEALS
+    gsap.utils.toArray('.gsap-card, .track-card').forEach(card => {
+      gsap.from(card, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%"
+        }
+      });
+    });
+  </script>
+</body>
+</html>
