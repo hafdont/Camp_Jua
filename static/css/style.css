@@ -1,0 +1,2420 @@
+body {
+  /* Replace with the path to your image file */
+  background-image:
+  linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.55)), 
+    url('../img/index_longonot_b&w.jpg');
+  
+  /* Scale the image to completely cover the entire viewport */
+  background-size: cover; 
+  
+  /* Center the image horizontally and vertically */
+  background-position: center center; 
+  
+  /* Prevent the image from repeating like a tile pattern */
+  background-repeat: no-repeat; 
+  
+  /* Keep the background fixed in place so it doesn't scroll with content */
+  background-attachment: fixed; 
+  
+  /* Ensure the body stretches to at least the full height of the device screen */
+  min-height: 100vh; 
+  
+  /* Remove default browser margins to prevent unwanted border gaps */
+  margin: 0; 
+}
+
+/* 1. Continuous Floating Effect */
+.floating {
+  animation: float 3s ease-in-out infinite;
+  transition: transform 0.2s ease;
+}
+
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px); /* Moves up slightly */
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.hover-text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Center the big text perfectly */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Big Text Styling */
+    font-size: 3rem; /* Make this bigger or smaller as needed */
+    font-weight: bold;
+    color: #ffffff; /* Change to your preferred text color */
+    text-shadow: 0 0 10px rgba(0,0,0,0.5); /* Helps text stand out against background */
+    
+    /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; 
+    }
+
+
+/* Optional: Slight hover scale to show it's clickable */
+.floating:hover .hover-text {
+  cursor: pointer;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+  opacity: 10;
+}
+
+/* 2. Portal Transition Effect */
+/* This shrinks, spins, and fades out the wrapper as if disappearing into a vortex */
+.portal-vortex {
+  animation: portalCollapse 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+@keyframes portalCollapse {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(4px);
+  }
+  100% {
+    transform: scale(0) rotate(720deg); /* Spins twice and shrinks to nothing */
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+/* 1. Continuous Floating Effect */
+.floating {
+  animation: float 3s ease-in-out infinite;
+  transition: transform 0.2s ease;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px); /* Moves up slightly */
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.camp-jua-text{
+    font-size: 5rem
+}
+
+.camp-jua-description{
+    font-size: 2rem
+}
+
+
+.about {
+    min-height: 100vh;
+
+    padding: 120px 0;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+.about .row {
+    width: 100%;
+    min-height: 600px;
+
+    align-items: center;
+}
+
+
+
+/* --------------------------------
+   COLLAGE
+-------------------------------- */
+
+.collage-area {
+    position: relative;
+    height: 500px;
+}
+
+.photo {
+    position: absolute;
+    width: 180px;
+    height: 220px;
+    padding: 8px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.20);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.6s cubic-bezier(.22, .61, .36, 1),
+        opacity 0.4s ease,
+        filter 0.4s ease;
+
+    z-index: 1;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+/* Individual collage positions */
+
+.photo-1 {
+    top: 20px;
+    left: 20px;
+    transform: rotate(-12deg);
+}
+
+.photo-2 {
+    top: 10px;
+    left: 150px;
+    transform: rotate(8deg);
+}
+
+.photo-3 {
+    top: 120px;
+    left: 60px;
+    transform: rotate(-4deg);
+}
+
+.photo-4 {
+    top: 210px;
+    left: 180px;
+    transform: rotate(12deg);
+}
+
+.photo-5 {
+    top: 250px;
+    left: 20px;
+    transform: rotate(-8deg);
+}
+
+/* Hover */
+.photo:hover {
+    transform: translateY(-12px) scale(1.08) rotate(0deg);
+    z-index: 20;
+    box-shadow:0 25px 50px rgba(0, 0, 0, 0.28);
+}
+
+
+/* --------------------------------
+   SELECTED STATE
+-------------------------------- */
+
+.collage-area.selected .photo {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --------------------------------
+   SELECTED IMAGE
+-------------------------------- */
+
+.selected-area {
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected-image {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 4 / 5;
+
+    border-radius: 25px;
+    overflow: hidden;
+
+    background: #f3f3f3;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.selected-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    animation: selectedIn 0.7s ease;
+}
+
+@keyframes selectedIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+}
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.description-area {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#description {
+    width: 100%;
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    opacity: 1;
+    transform: translateY(0);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+#description h2 {
+    margin-bottom: 25px;
+
+    font-family: "DM Serif Display", serif;
+
+    font-size: clamp(2.5rem, 4vw, 4rem);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    color: #ffffff;
+}
+
+#description p {
+    margin: 0 auto;
+
+    max-width: 560px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.description-hide {
+    opacity: 0 !important;
+
+    transform: translateY(20px) !important;
+}
+
+
+
+
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 30; /* Ensures it sits above the selected image */
+
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 20px;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease, background 0.2s ease;
+}
+
+.back-button:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.selected-area {
+    position: relative;
+}
+
+/* Shows button when a photo is selected */
+.about.show-selected .back-button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero-section {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    padding: 40px 24px;
+
+    color: white;
+}
+
+.hero-content {
+    width: min(1100px, 100%);
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transform: translateY(-2vh);
+}
+
+.hero-kicker {
+    margin-bottom: 30px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+
+    opacity: 0.75;
+}
+
+.hero-content h1 {
+    margin: 0;
+
+    max-width: 1000px;
+
+    font-family: "DM Serif Display", serif;
+
+    font-size: clamp(4rem, 9vw, 9rem);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.04em;
+
+    text-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.35);
+}
+
+.hero-content h1 span {
+    display: block;
+
+    font-style: italic;
+
+    opacity: 0.85;
+}
+
+.hero-description {
+    max-width: 650px;
+
+    margin-top: 45px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-description em {
+    font-family: "DM Serif Display", serif;
+
+    font-size: 1.3rem;
+}
+
+.hero-description strong {
+    color: white;
+}
+
+.hero-scroll {
+    margin-top: 60px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.25em;
+
+    text-transform: uppercase;
+
+    opacity: 0.65;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 55px;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+
+    0%,
+    100% {
+        transform: scaleY(0.5);
+        transform-origin: top;
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scaleY(1);
+        transform-origin: top;
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   JUA PHILOSOPHY EXPERIENCE
+========================================= */
+
+.jua-philosophy {
+    position: relative;
+    height: 300vh;
+
+    background: #090909;
+    color: #ffffff;
+}
+
+
+/* -----------------------------------------
+   PINNED SCREEN
+----------------------------------------- */
+
+.philosophy-pin {
+    position: sticky;
+    top: 0;
+
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* -----------------------------------------
+   BACKGROUND
+----------------------------------------- */
+
+.philosophy-background {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 255, 0.08),
+            transparent 35%
+        ),
+        #090909;
+
+    transform: scale(1.2);
+
+    z-index: 0;
+}
+
+
+/* -----------------------------------------
+   CONTENT
+----------------------------------------- */
+
+.philosophy-content {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    z-index: 2;
+}
+
+
+/* -----------------------------------------
+   LABEL
+----------------------------------------- */
+
+.philosophy-label {
+    position: absolute;
+
+    top: 50px;
+    left: 50px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 11px;
+    letter-spacing: 0.25em;
+
+    opacity: 0.55;
+}
+
+
+/* -----------------------------------------
+   JUA
+----------------------------------------- */
+
+.jua-word {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(120px, 22vw, 320px);
+
+    font-weight: 700;
+
+    line-height: 0.8;
+
+    letter-spacing: -0.08em;
+
+    user-select: none;
+
+    z-index: 2;
+}
+
+
+.jua-letter {
+    display: inline-block;
+
+    will-change: transform;
+}
+
+
+/* -----------------------------------------
+   PHILOSOPHY CONTENT
+----------------------------------------- */
+
+.philosophy-reveal {
+    position: absolute;
+
+    width: min(700px, 85vw);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: translateY(80px);
+
+    z-index: 3;
+}
+
+
+.philosophy-reveal h2 {
+    margin: 0 0 35px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(42px, 7vw, 90px);
+
+    font-weight: 600;
+
+    letter-spacing: -0.05em;
+
+    line-height: 0.95;
+}
+
+
+.philosophy-reveal h2 span {
+    opacity: 0.3;
+
+    margin: 0 10px;
+}
+
+
+.philosophy-reveal p {
+    max-width: 650px;
+
+    margin: 0 auto 20px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(16px, 1.4vw, 20px);
+
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.72);
+}
+
+
+.philosophy-reveal strong {
+    color: #ffffff;
+}
+
+
+/* -----------------------------------------
+   SCROLL INDICATOR
+----------------------------------------- */
+
+.philosophy-scroll {
+    position: absolute;
+
+    bottom: 45px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 0.25em;
+
+    opacity: 0.45;
+}
+
+
+.scroll-line {
+    width: 1px;
+
+    height: 50px;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    transform-origin: top;
+}
+
+
+/* -----------------------------------------
+   MOBILE
+----------------------------------------- */
+
+@media (max-width: 768px) {
+
+    .philosophy-label {
+        top: 30px;
+        left: 25px;
+    }
+
+
+    .jua-word {
+        font-size: 30vw;
+    }
+
+
+    .philosophy-reveal {
+        width: 88vw;
+    }
+
+
+    .philosophy-reveal h2 {
+        font-size: 13vw;
+    }
+
+
+    .philosophy-reveal p {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+
+    .philosophy-scroll {
+        bottom: 25px;
+    }
+
+}
+
+/* =========================================================
+   JUA EXPERIENCE — FULL VISUAL SYSTEM
+========================================================= */
+
+
+/* =========================================================
+   SHARED
+========================================================= */
+
+.section-eyebrow {
+    font-family: "Manrope", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    opacity: 0.55;
+    text-transform: uppercase;
+}
+
+.jua-worlds,
+.jua-cases,
+.ukweli-arts,
+.jua-land,
+.jua-vision,
+.jua-phases,
+.jua-timeline,
+.jua-learning,
+.jua-scholars,
+.jua-final {
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+/* =========================================================
+   THREE WORLDS
+========================================================= */
+
+.jua-worlds {
+    min-height: 300vh;
+    background: #f2efe7;
+    color: #111;
+}
+
+.worlds-intro {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    width: min(900px, 88vw);
+
+    margin: auto;
+}
+
+.worlds-intro h2 {
+    margin: 25px 0;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(55px, 9vw, 130px);
+
+    line-height: 0.88;
+
+    letter-spacing: -0.07em;
+}
+
+.worlds-intro h2 span {
+    opacity: 0.35;
+}
+
+.worlds-intro p {
+    width: min(520px, 100%);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    opacity: 0.65;
+}
+
+
+.worlds-stage {
+    position: sticky;
+
+    top: 0;
+
+    height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    padding: 7vw;
+}
+
+
+.world-card {
+    position: absolute;
+
+    width: min(430px, 75vw);
+
+    height: min(620px, 76vh);
+
+    overflow: hidden;
+
+    color: white;
+
+    will-change: transform;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.25);
+}
+
+
+.world-card-1 {
+    z-index: 3;
+}
+
+.world-card-2 {
+    z-index: 2;
+}
+
+.world-card-3 {
+    z-index: 1;
+}
+
+
+.world-image {
+    position: absolute;
+
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+
+    transform: scale(1.1);
+}
+
+.world-image-academy {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20,20,20,.15),
+            rgba(20,20,20,.8)
+        ),
+        url("images/jua-academy.jpg") center/cover;
+}
+
+.world-image-mazingira {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20,20,20,.15),
+            rgba(20,20,20,.85)
+        ),
+        url("images/jua-mazingira.jpg") center/cover;
+}
+
+.world-image-blackstar {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20,20,20,.15),
+            rgba(20,20,20,.85)
+        ),
+        url("images/black-star.jpg") center/cover;
+}
+
+
+.world-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.05) 70%
+        );
+}
+
+
+.world-number {
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    font-size: 11px;
+
+    letter-spacing: .2em;
+
+    opacity: .65;
+
+    z-index: 5;
+}
+
+
+.world-content {
+    position: absolute;
+
+    left: 35px;
+    right: 35px;
+    bottom: 35px;
+
+    z-index: 5;
+}
+
+
+.world-tag {
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    opacity: .65;
+
+    margin-bottom: 18px;
+}
+
+
+.world-content h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(45px, 5vw, 72px);
+
+    line-height: .85;
+
+    letter-spacing: -.06em;
+
+    margin: 0 0 25px;
+}
+
+
+.world-content p {
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    max-width: 350px;
+
+    opacity: .75;
+}
+
+
+.world-arrow {
+    display: block;
+
+    margin-top: 25px;
+
+    font-size: 25px;
+}
+
+
+.worlds-progress {
+    position: fixed;
+
+    right: 30px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 20;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 9px;
+
+    letter-spacing: .15em;
+}
+
+.worlds-progress-line {
+    width: 1px;
+
+    height: 100px;
+
+    background: rgba(0,0,0,.15);
+
+    position: relative;
+}
+
+.worlds-progress-line span {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+
+    height: 0;
+
+    background: #111;
+}
+
+
+
+/* =========================================================
+   CASE STUDIES
+========================================================= */
+
+.jua-cases {
+    height: 300vh;
+
+    background: #111;
+
+    color: white;
+}
+
+.cases-header {
+    position: absolute;
+
+    top: 70px;
+    left: 6vw;
+    right: 6vw;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    z-index: 10;
+}
+
+.cases-header h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(50px, 7vw, 105px);
+
+    line-height: .88;
+
+    letter-spacing: -.07em;
+
+    margin-top: 25px;
+}
+
+.cases-header h2 em {
+    opacity: .35;
+}
+
+.cases-instruction {
+    display: flex;
+
+    gap: 15px;
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    opacity: .5;
+}
+
+
+.cases-window {
+    position: sticky;
+
+    top: 0;
+
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+.cases-track {
+    display: flex;
+
+    gap: 40px;
+
+    padding-left: 6vw;
+
+    width: max-content;
+}
+
+
+.case-card {
+    position: relative;
+
+    width: min(76vw, 850px);
+
+    height: 70vh;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+}
+
+
+.case-image {
+    position: absolute;
+
+    inset: 0;
+
+    background-size: cover;
+
+    background-position: center;
+
+    transform: scale(1.05);
+}
+
+.case-image-1 {
+    background:
+        linear-gradient(
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.55)
+        ),
+        url("images/uaacc.jpg") center/cover;
+}
+
+.case-image-2 {
+    background:
+        linear-gradient(
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.55)
+        ),
+        url("images/paa-ya-paa.jpg") center/cover;
+}
+
+.case-image-3 {
+    background:
+        linear-gradient(
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.55)
+        ),
+        url("images/one-vibe.jpg") center/cover;
+}
+
+
+.case-number {
+    position: absolute;
+
+    top: 25px;
+    left: 25px;
+
+    z-index: 5;
+
+    font-size: 10px;
+
+    letter-spacing: .2em;
+
+    opacity: .6;
+}
+
+
+.case-info {
+    position: absolute;
+
+    bottom: 35px;
+    left: 35px;
+
+    z-index: 5;
+}
+
+
+.case-location {
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    opacity: .65;
+
+    margin-bottom: 15px;
+}
+
+
+.case-info h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(55px, 8vw, 105px);
+
+    line-height: .8;
+
+    letter-spacing: -.07em;
+
+    margin-bottom: 25px;
+}
+
+
+.case-info p {
+    width: min(400px, 75vw);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    opacity: .75;
+}
+
+
+.case-link {
+    display: inline-flex;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+}
+
+
+
+/* =========================================================
+   UKWELI ARTS
+========================================================= */
+
+.ukweli-arts {
+    min-height: 130vh;
+
+    background: #d9d1c2;
+
+    color: #171717;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.arts-image-wrap {
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+}
+
+
+.arts-image {
+    position: absolute;
+
+    inset: 5%;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.1),
+            rgba(0,0,0,.1)
+        ),
+        url("images/ukweli-arts.jpg") center/cover;
+
+    transform: scale(1.15);
+}
+
+
+.arts-image-label {
+    position: absolute;
+
+    left: 8%;
+    bottom: 9%;
+
+    color: white;
+
+    font-size: 10px;
+
+    letter-spacing: .25em;
+}
+
+
+.arts-content {
+    padding: 10vw 7vw;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+.arts-big-word {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(80px, 12vw, 180px);
+
+    line-height: .8;
+
+    letter-spacing: -.09em;
+
+    margin: 50px 0;
+}
+
+
+.arts-lead {
+    max-width: 520px;
+
+    font-size: clamp(22px, 2vw, 30px);
+
+    line-height: 1.35;
+
+    letter-spacing: -.03em;
+}
+
+
+.arts-story {
+    max-width: 480px;
+
+    margin-top: 50px;
+}
+
+
+.arts-story p {
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    opacity: .65;
+
+    margin-bottom: 20px;
+}
+
+
+.arts-line {
+    height: 1px;
+
+    width: 100%;
+
+    background: rgba(0,0,0,.2);
+
+    margin: 40px 0 20px;
+}
+
+
+.arts-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    font-size: 8px;
+
+    letter-spacing: .18em;
+
+    opacity: .5;
+}
+
+
+
+/* =========================================================
+   LAND
+========================================================= */
+
+.jua-land {
+    height: 150vh;
+
+    background: #171b18;
+
+    color: white;
+}
+
+
+.land-sky {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,200,100,.2),
+            transparent 25%
+        ),
+        linear-gradient(
+            to bottom,
+            #18221d,
+            #25382d 50%,
+            #111512
+        );
+}
+
+
+.land-sun {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(255,210,120,.9);
+
+    filter: blur(2px);
+
+    left: 50%;
+    top: 38%;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+        0 0 100px rgba(255,180,80,.35);
+}
+
+
+.land-content {
+    position: sticky;
+
+    top: 0;
+
+    height: 100vh;
+
+    z-index: 5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.land-content h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(70px, 11vw, 170px);
+
+    line-height: .8;
+
+    letter-spacing: -.08em;
+
+    margin: 35px 0;
+}
+
+
+.land-content h2 span {
+    font-style: italic;
+
+    opacity: .4;
+}
+
+
+.land-content p {
+    width: min(520px, 85vw);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    opacity: .65;
+}
+
+
+.land-coordinate {
+    margin-top: 35px;
+
+    font-size: 9px;
+
+    letter-spacing: .25em;
+
+    opacity: .45;
+}
+
+
+.land-horizon {
+    position: absolute;
+
+    bottom: 0;
+    left: -10%;
+    right: -10%;
+
+    height: 30%;
+
+    background:
+        linear-gradient(
+            165deg,
+            transparent 45%,
+            rgba(5,10,7,.95) 46%
+        );
+
+    transform-origin: bottom;
+}
+
+
+.land-grain {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .08;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.5) .5px,
+            transparent .5px
+        );
+
+    background-size: 5px 5px;
+
+    z-index: 4;
+
+    pointer-events: none;
+}
+
+
+
+/* =========================================================
+   VISION
+========================================================= */
+
+.jua-vision {
+    min-height: 140vh;
+
+    background: #f1eee7;
+
+    color: #111;
+
+    padding: 7vw;
+}
+
+
+.vision-top {
+    display: flex;
+
+    justify-content: space-between;
+}
+
+
+.vision-index {
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    opacity: .4;
+}
+
+
+.vision-statement {
+    margin-top: 18vh;
+}
+
+
+.vision-line {
+    overflow: hidden;
+
+    border-bottom: 1px solid rgba(0,0,0,.12);
+
+    padding: 15px 0;
+}
+
+
+.vision-line span {
+    display: block;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(70px, 13vw, 190px);
+
+    font-weight: 600;
+
+    line-height: .8;
+
+    letter-spacing: -.09em;
+
+    transform: translateY(110%);
+}
+
+
+.vision-bottom {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 100px;
+}
+
+
+.vision-bottom p {
+    width: min(500px, 90vw);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    opacity: .6;
+}
+
+
+
+/* =========================================================
+   PHASES
+========================================================= */
+
+.jua-phases {
+    background: #111;
+
+    color: white;
+
+    padding: 12vw 7vw;
+}
+
+
+.phases-header h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(65px, 10vw, 145px);
+
+    line-height: .82;
+
+    letter-spacing: -.08em;
+
+    margin: 40px 0 150px;
+}
+
+
+.phases-header h2 span {
+    opacity: .3;
+}
+
+
+.phase-item {
+    display: grid;
+
+    grid-template-columns: 80px 1fr 120px;
+
+    gap: 30px;
+
+    align-items: start;
+
+    border-top: 1px solid rgba(255,255,255,.15);
+
+    padding: 45px 0;
+}
+
+
+.phase-number {
+    font-size: 10px;
+
+    letter-spacing: .2em;
+
+    opacity: .4;
+}
+
+
+.phase-main h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 45px;
+
+    letter-spacing: -.05em;
+
+    margin-bottom: 15px;
+}
+
+
+.phase-main p {
+    max-width: 500px;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    opacity: .55;
+}
+
+
+.phase-status {
+    justify-self: end;
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    opacity: .4;
+}
+
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.jua-timeline {
+    height: 350vh;
+
+    background: #e6dfd2;
+
+    color: #111;
+}
+
+
+.timeline-sticky {
+    position: sticky;
+
+    top: 0;
+
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+
+.timeline-heading {
+    position: absolute;
+
+    left: 7vw;
+    top: 10vh;
+
+    z-index: 5;
+}
+
+
+.timeline-heading h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(60px, 9vw, 130px);
+
+    line-height: .8;
+
+    letter-spacing: -.08em;
+
+    margin-top: 30px;
+}
+
+
+.timeline-heading h2 span {
+    opacity: .35;
+}
+
+
+.timeline-track {
+    position: absolute;
+
+    left: 40vw;
+
+    top: 55%;
+
+    display: flex;
+
+    gap: 10vw;
+
+    width: max-content;
+}
+
+
+.timeline-event {
+    width: 300px;
+
+    flex-shrink: 0;
+
+    border-top: 1px solid rgba(0,0,0,.35);
+
+    padding-top: 20px;
+}
+
+
+.timeline-event > span {
+    font-size: 10px;
+
+    letter-spacing: .25em;
+
+    opacity: .5;
+}
+
+
+.timeline-event h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 32px;
+
+    letter-spacing: -.04em;
+
+    margin: 30px 0 15px;
+}
+
+
+.timeline-event p {
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    opacity: .55;
+}
+
+
+
+/* =========================================================
+   LEARNING
+========================================================= */
+
+.jua-learning {
+    min-height: 150vh;
+
+    background: #101010;
+
+    color: white;
+
+    padding: 10vw 7vw;
+}
+
+
+.learning-intro {
+    max-width: 800px;
+}
+
+
+.learning-intro h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(65px, 10vw, 140px);
+
+    line-height: .82;
+
+    letter-spacing: -.08em;
+
+    margin: 40px 0;
+}
+
+
+.learning-intro h2 span {
+    opacity: .3;
+}
+
+
+.learning-intro p {
+    width: min(520px, 100%);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    opacity: .55;
+}
+
+
+.learning-orbit {
+    position: relative;
+
+    width: min(650px, 85vw);
+
+    aspect-ratio: 1;
+
+    margin: 15vh auto 0;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 50%;
+}
+
+
+.learning-orbit::before,
+.learning-orbit::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 15%;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 50%;
+}
+
+
+.learning-orbit::after {
+    inset: 32%;
+}
+
+
+.orbit-center {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: white;
+
+    color: black;
+
+    font-family: "Manrope", sans-serif;
+
+    font-weight: 700;
+
+    font-size: 30px;
+}
+
+
+.learning-track {
+    position: absolute;
+
+    border: 0;
+
+    background: none;
+
+    color: white;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: .15em;
+
+    cursor: pointer;
+
+    transition: opacity .3s ease;
+}
+
+
+.learning-track span {
+    display: block;
+
+    font-size: 8px;
+
+    opacity: .35;
+
+    margin-bottom: 5px;
+}
+
+
+.learning-track.active {
+    opacity: 1;
+}
+
+
+.learning-track:not(.active) {
+    opacity: .35;
+}
+
+
+.learning-track[data-track="under14"] {
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.learning-track[data-track="college"] {
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.learning-track[data-track="leadership"] {
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.learning-track[data-track="lifelong"] {
+    left: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.learning-display {
+    position: relative;
+
+    max-width: 650px;
+
+    margin: 50px auto 0;
+
+    min-height: 180px;
+}
+
+
+.learning-panel {
+    display: none;
+
+    text-align: center;
+}
+
+
+.learning-panel.active {
+    display: block;
+}
+
+
+.learning-panel > span {
+    font-size: 9px;
+
+    opacity: .3;
+}
+
+
+.learning-panel h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 42px;
+
+    letter-spacing: -.05em;
+
+    margin: 15px 0;
+}
+
+
+.learning-panel p {
+    font-size: 14px;
+
+    opacity: .5;
+}
+
+
+
+/* =========================================================
+   SCHOLARS
+========================================================= */
+
+.jua-scholars {
+    min-height: 100vh;
+
+    background: #20251f;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.scholars-bg {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.08),
+            transparent 45%
+        );
+}
+
+
+.scholars-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.scholars-number {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(120px, 20vw, 280px);
+
+    font-weight: 600;
+
+    line-height: .7;
+
+    letter-spacing: -.1em;
+
+    margin: 60px 0 30px;
+}
+
+
+.scholars-number span {
+    font-size: 11px;
+
+    letter-spacing: .25em;
+
+    vertical-align: middle;
+
+    opacity: .4;
+}
+
+
+.scholars-content h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(50px, 7vw, 100px);
+
+    letter-spacing: -.07em;
+}
+
+
+.scholars-content > p {
+    max-width: 500px;
+
+    margin: 25px auto;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    opacity: .55;
+}
+
+
+.scholar-tags {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 40px;
+}
+
+
+.scholar-tags span {
+    border: 1px solid rgba(255,255,255,.2);
+
+    padding: 10px 15px;
+
+    font-size: 8px;
+
+    letter-spacing: .2em;
+
+    opacity: .6;
+}
+
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.jua-final {
+    min-height: 100vh;
+
+    background: #f0ece3;
+
+    color: #111;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 7vw;
+}
+
+
+.final-content h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(70px, 12vw, 180px);
+
+    line-height: .78;
+
+    letter-spacing: -.09em;
+
+    margin: 40px 0 70px;
+}
+
+
+.final-content h2 em {
+    opacity: .35;
+}
+
+
+.final-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    width: fit-content;
+
+    border-bottom: 1px solid rgba(0,0,0,.5);
+
+    padding-bottom: 12px;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: .2em;
+}
+
+
+.final-button span {
+    font-size: 20px;
+
+    transition: transform .3s ease;
+}
+
+
+.final-button:hover span {
+    transform: translate(5px, -5px);
+}
+
+
+.final-footer {
+    position: absolute;
+
+    left: 7vw;
+    right: 7vw;
+    bottom: 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 8px;
+
+    letter-spacing: .15em;
+
+    opacity: .45;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .worlds-stage {
+        padding: 20px;
+    }
+
+    .world-card {
+        width: 78vw;
+        height: 65vh;
+    }
+
+    .worlds-progress {
+        display: none;
+    }
+
+
+    .cases-header {
+        top: 40px;
+        left: 7vw;
+    }
+
+    .cases-instruction {
+        display: none;
+    }
+
+    .case-card {
+        width: 82vw;
+        height: 62vh;
+    }
+
+
+    .ukweli-arts {
+        grid-template-columns: 1fr;
+    }
+
+    .arts-image-wrap {
+        min-height: 60vh;
+    }
+
+    .arts-content {
+        padding: 18vw 8vw;
+    }
+
+    .arts-footer {
+        flex-wrap: wrap;
+    }
+
+
+    .phase-item {
+        grid-template-columns: 40px 1fr;
+    }
+
+    .phase-status {
+        display: none;
+    }
+
+
+    .timeline-heading {
+        left: 7vw;
+        top: 8vh;
+    }
+
+    .timeline-track {
+        left: 7vw;
+        top: 58%;
+    }
+
+
+    .learning-orbit {
+        margin-top: 10vh;
+    }
+
+    .learning-track {
+        font-size: 8px;
+    }
+
+
+    .final-footer {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+}
