@@ -35,7 +35,7 @@
             subtitle: 'By Kama Ft Killer Loop. Produced by Kunta',
             type: 'music',
             duration: '—',
-            art: 'JUA',
+            art: 'Liwe Liwalo',
             cover: 'linear-gradient(140deg,#75884d,#233529 65%,#0e1815)',
             src: 'static/audio/liweliwalo.mpeg',
             video: ''
@@ -45,7 +45,7 @@
             subtitle: 'By Kama, Ft KWame and Roba',
             type: 'music',
             duration: '—',
-            art: 'ROOTS',
+            art: 'Dumb Deaf & Blind',
             cover: 'linear-gradient(140deg,#9b6140,#3a2924 65%,#181414)',
             src: 'static/audio/dumbdeaf&blind.mpeg',
             video: ''
@@ -55,41 +55,31 @@
             subtitle: 'by Ukoo Flani Mau Mau',
             type: 'video',
             duration: '—',
-            art: 'VISION',
+            art: 'Angalia Saa',
             cover: 'linear-gradient(140deg,#526b78,#283d43 65%,#0d171a)',
             src: '',
             video: 'static/videos/ANGALIA_SAA.mp4',
         },
         {
-            title: 'Live Sessions',
-            subtitle: 'Live performance recordings',
+            title: 'Broken Dreams',
+            subtitle: 'By Kama',
             type: 'video',
             duration: '—',
-            art: 'LIVE',
+            art: 'Broken Dreams',
             cover: 'linear-gradient(140deg,#756348,#342e24 65%,#13120f)',
             src: '',
-            video: ''
+            video: 'static/videos/BROKEN_DREAMS.mp4'
         },
         {
-            title: 'Freedom Frequencies',
-            subtitle: 'Future audio collection',
-            type: 'music',
+            title: 'Kamau Kalamashaka',
+            subtitle: 'Madaraka Festival 2014 Live Performance',
+            type: 'video', 
             duration: '—',
-            art: 'FREE',
+            art: 'Live Performance',
             cover: 'linear-gradient(140deg,#748367,#26382d 65%,#101814)',
             src: '',
-            video: ''
+            video: 'static/videos/Live_Madaraka_Festival_2014.mp4'
         },
-        {
-            title: 'Collaborations',
-            subtitle: 'Creative collaborations',
-            type: 'music',
-            duration: '—',
-            art: 'TOGETHER',
-            cover: 'linear-gradient(140deg,#6d587c,#32243e 65%,#15111b)',
-            src: '',
-            video: ''
-        }
     ];
 
     const records = $('#jx-records');
