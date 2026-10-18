@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music & Visuals | JUA</title>
+    <meta name="description" content="Explore the future music, live sessions and visual arts catalogue of JUA.">
+    <link rel="stylesheet" href="static/css/experience.css">
+</head>
+
+<body style="margin:0;background:#111512">
+
+    <header class="jx-nav">
+        <a class="jx-brand" href="index.html">
+            <i></i> JUA<span style="font-size:10px;letter-spacing:.15em;opacity:.6;margin-left:6px">ARTS / CULTURE</span>
+        </a>
+
+        <div class="jx-nav-right">
+            <span class="jx-nav-label">EXPLORE</span>
+
+            <button class="jx-menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="jx-menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="jx-menu" id="jx-menu" aria-hidden="true">
+        <div>
+            <a href="index.html"><small>01</small>Home</a>
+
+            <a href="about.html"><small>02</small>Our World</a>
+
+            <a href="music.html">
+                <small>03</small>Music & Visuals
+            </a>
+
+            <a href="contact.html"><small>04</small>Connect</a>
+        </div>
+
+        <div class="jx-menu-bottom">
+            <span>JUA — EDUCATION, ARTS & HEALING</span>
+            <span>KENYA / EVERYWHERE</span>
+        </div>
+    </nav>
+
+    <main class="jx-music">
+
+        <section class="jx-music-hero">
+            <div>
+                <div class="jx-kicker">JUA / SOUND & VISION</div>
+
+                <h1>
+                    FEEL<br>
+                    THE <em>ART.</em>
+                </h1>
+            </div>
+
+            <p>
+                A living archive of sound, performance, visual storytelling and collaborations. Built for the artist. Made for the listener.
+                <br><br>
+                <span style="color:#d9fa68;font-size:12px;letter-spacing:.14em">THE COLLECTION IS TAKING SHAPE ↗</span>
+            </p>
+        </section>
+
+        <section class="jx-feature" aria-label="Featured release">
+            <div class="jx-feature-art">
+                <strong>FEATURED / 001</strong>
+            </div>
+
+            <div class="jx-feature-info">
+                <div class="jx-kicker">THE NEXT SOUND</div>
+
+                <h2>
+                    THE STORY<br>
+                    STARTS HERE.
+                </h2>
+
+                <p>
+                    A featured-release space ready for the artist's cover artwork, title, description, and first single or visual premiere.
+                </p>
+
+                <button class="jx-primary" type="button" onclick="document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">
+                    EXPLORE THE COLLECTION ↗
+                </button>
+            </div>
+        </section>
+
+        <section id="catalogue">
+            <div class="jx-catalog-head">
+                <div>
+                    <div class="jx-kicker">THE ARCHIVE / 001—006</div>
+                    <h2>THE COLLECTION.</h2>
+                </div>
+
+                <div class="jx-filters" role="group" aria-label="Catalogue filters">
+                    <button class="jx-filter active" data-filter="all">All</button>
+                    <button class="jx-filter" data-filter="music">Music</button>
+                    <button class="jx-filter" data-filter="video">Visuals</button>
+                </div>
+            </div>
+
+            <div class="jx-records" id="jx-records"></div>
+        </section>
+
+        <section class="jx-tracks">
+            <div class="jx-kicker">LISTEN / WATCH</div>
+
+            <h2>Tracklist & archive.</h2>
+
+            <div id="jx-tracks"></div>
+        </section>
+
+        <p style="color:#899589;font-size:12px;margin-top:35px">
+            Preview catalogue: titles and artwork are design placeholders until official releases are provided.
+        </p>
+
+    </main>
+
+    <div class="jx-player" role="region" aria-label="Audio player">
+
+        <div class="jx-player-title">
+            <strong>Untitled</strong>
+            <small>JUA</small>
+        </div>
+
+        <div class="jx-player-controls">
+            <button class="jx-prev" aria-label="Previous track">⏮</button>
+            <button class="jx-play" aria-label="Play">▶</button>
+            <button class="jx-next" aria-label="Next track">⏭</button>
+        </div>
+
+        <div class="jx-progress">
+            <time class="jx-current">0:00</time>
+
+            <input class="jx-seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+
+            <time class="jx-duration">0:00</time>
+        </div>
+
+        <input class="jx-volume" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+
+    </div>
+
+    <div class="jx-video-modal" aria-hidden="true">
+
+        <div class="jx-video-shell">
+
+            <header>
+                <strong>JUA / VISUALS</strong>
+                <button class="jx-video-close" aria-label="Close video">×</button>
+            </header>
+
+            <video controls preload="none" playsinline></video>
+
+            <p>
+                Video streams only after a visitor opens it. Use compressed MP4 or adaptive streaming for published releases.
+            </p>
+
+        </div>
+    </div>
+
+    <script src="static/js/experience.js" defer></script>
+
+</body>
+</html>
