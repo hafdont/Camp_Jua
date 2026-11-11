@@ -54,7 +54,7 @@
                 <button id="backButton" class="back-button">
                     ← View all
                 </button>
-                <div id="selectedImage" class="selected-image">
+                <div id="selectedImage" class="selected-image text-danger d-none">
                     <span class="placeholder">
                         Explore the different experiences that make Camp Jua
                         special.
@@ -63,7 +63,7 @@
             </div>
 
             <!-- COLUMN 2: Collage -->
-            <div class="col-md-4 collage-area">
+            <div class="col-md-10 collage-area">
 
                 <div class="photo photo-1"
                     data-title="Institutes"
@@ -101,6 +101,82 @@
                 </div>
 
                 <div class="photo photo-5"
+                    data-title="People"
+                    data-text="Beautiful moments, movement and memories shared with other people."
+                    data-image="./static/img/people.jpeg">
+                    <img src="./static/img/people.jpeg" alt="People">
+                </div>
+
+                                                <div class="photo photo-6"
+                    data-title="Springs Onions"
+                    data-text="From Farm to Fork series"
+                    data-image="./static/img/fromfamrtofrk.jfif">
+                    <img src="./static/img/fromfamrtofrk.jfif" alt="Spring Onions">
+                </div>
+                           
+
+                <div class="photo photo-7"
+                    data-title="horseWeed"
+                    data-text=""
+                    data-image="./static/img/horseWeed.jpeg">
+                    <img src="./static/img/horseWeed.jpeg" alt="horseWeed plant">
+                </div>
+                                <div class="photo photo-8"
+                    data-title="Farm with Longonot in the Background "
+                    data-text="Farm with Longonot in the Background "
+                    data-image="./static/img/farmwithlongonot_in_the_background.jfif">
+                    <img src="./static/img/farmwithlongonot_in_the_background.jfif" alt="Farm with Longonot in the Background ">
+                </div>
+
+                <div class="photo photo-9"
+                    data-title="Spring Onions"
+                    data-text="More of From Far, to Folk Series"
+                    data-image="./static/img/springonionharvestatcampjuafarms.jfif">
+                    <img src="./static/img/springonionharvestatcampjuafarms.jfif" alt="More Spring Onions">
+                </div>
+                <div class="photo photo-10"
+                    data-title="Ngwace"
+                    data-text="Mor from Farm to Folk Series"
+                    data-image="./static/img/ngwace.jfif">
+                    <img src="./static/img/ngwace.jfif" alt="People">
+                </div>
+                                <div class="photo photo-11"
+                    data-title="Spring Onions"
+                    data-text="More from Farm to Folk Series"
+                    data-image="./static/img/morespringonions.jfif">
+                    <img src="./static/img/morespringonions.jfif" alt="Even More Spring Onions">
+                </div>
+                                <div class="photo photo-12"
+                    data-title="Variety of Flowers"
+                    data-text="Juan Garden /flowers"
+                    data-image="./static/img/varietyofflowers.jfif">
+                    <img src="./static/img/varietyofflowers.jfif" alt="Variety OF Flowers ">
+                </div>
+                                <div class="photo photo-13"
+                    data-title="Colard Greens"
+                    data-text="More from Farm to Fork Series"
+                    data-image="./static/img/colardGreens.jfif">
+                    <img src="./static/img/colardGreens.jfif" alt="Colard Greens">
+                </div>
+                                <div class="photo photo-14"
+                    data-title="Panaromic Views"
+                    data-text="Panaromic Views of The Mt Longonot at the Jaa Center"
+                    data-image="./static/img/phenominal_Panaromicview_ofmtlongonot_of_thegreat_rift_valey.jfif">
+                    <img src="./static/img/phenominal_Panaromicview_ofmtlongonot_of_thegreat_rift_valey.jfif" alt="Panaromic View of Mt. LOngonot ">
+                </div>
+                                <div class="photo photo-15"
+                    data-title="Building with Earth"
+                    data-text="Building with 100% Organic Materials that are Very Eco friendly"
+                    data-image="./static/img/100naturalbuildingmaterials_very_eco_friiendly.jfif">
+                    <img src="./static/img/100naturalbuildingmaterials_very_eco_friiendly.jfif" alt="Building with Earth">
+                </div>
+                                <div class="photo photo-16"
+                    data-title="People"
+                    data-text="Beautiful moments, movement and memories shared with other people."
+                    data-image="./static/img/people.jpeg">
+                    <img src="./static/img/people.jpeg" alt="People">
+                </div>
+                                <div class="photo photo-17"
                     data-title="People"
                     data-text="Beautiful moments, movement and memories shared with other people."
                     data-image="./static/img/people.jpeg">
@@ -1132,6 +1208,8 @@
 
         const about = document.querySelector(".about");
 
+        
+
 
         photos.forEach(photo => {
 
@@ -1155,6 +1233,8 @@
                 // Hide description temporarily
                 description.classList.add("description-hide");
 
+                desc
+
                 setTimeout(() => {
 
                     description.innerHTML = `
@@ -1173,6 +1253,9 @@
         /* BACK TO COLLAGE */
 
         backButton.addEventListener("click", () => {
+
+            selectedImage.classList.add("d-block");
+            selectedImage.classList.remove("d-none");
 
             // Hide selected image
             selectedImage.innerHTML = `
@@ -1201,6 +1284,9 @@
                 description.classList.remove("description-hide");
 
             }, 300);
+
+
+
 
         });
 

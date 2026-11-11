@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151b16">   <title>Camp Jua | A Living Archive</title>
+  <link rel="stylesheet" href="./static/css/archive.css">
+  <script src="./static/js/archive.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">JUA<span>✳</span></a>
+    <span class="top-label">THE LIVING ARCHIVE / KENYA</span>
+    <a class="back-link" href="index.html">BACK HOME ↗</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-top">
+        <span>THE LAND. THE PEOPLE. THE JOURNEY.</span>
+        <span>EST. THROUGH COMMUNITY</span>
+      </div>
+      <h1>CAMP<br><em>JUA</em><span class="asterisk">✳</span></h1>
+      <div class="hero-bottom">
+        <p>Built with the earth. Grown with the people. A living record of construction, cultivation and connection to the land.</p>
+        <a href="#construction">EXPLORE THE STORY ↓</a>
+      </div>
+    </section>
+
+    <section class="construction section-pad" id="construction">
+      <div class="section-heading">
+        <span class="eyebrow">01 / THE MAKING</span>
+        <h2>FROM THE<br><em>GROUND UP.</em></h2>
+        <p>Three chapters documenting the journey from the first building blocks to the finished structure.</p>
+      </div>
+
+      <div class="story-viewer" aria-label="Construction photograph carousel">
+        <div class="story-image-wrap">
+          <img id="story-image" src="./static/img/progressovertheyears.jfif" alt="Early earth-block construction at Camp Jua">
+          <div class="image-index" id="story-count">01 / 03</div>
+        </div>
+        <div class="story-info" aria-live="polite">
+          <div>
+            <span class="eyebrow" id="story-chapter">CHAPTER 01</span>
+            <h3 id="story-title">Progress Over the Years</h3>
+            <p id="story-description">A vision takes shape, one carefully laid block at a time.</p>
+          </div>
+          <div class="arrows">
+            <button id="prev-story" aria-label="Previous photograph">←</button>
+            <button id="next-story" aria-label="Next photograph">→</button>
+          </div>
+        </div>
+        <div class="story-timeline" id="story-timeline" aria-label="Construction chapters"></div>
+      </div>
+    </section>
+
+    <section class="statement">
+      <span>THE CAMP JUA ETHOS</span>
+      <p>NOT JUST A PLACE.<br>AN IDEA <em>TAKING ROOT.</em></p>
+    </section>
+
+    <section class="land section-pad" id="land">
+      <div class="section-heading">
+        <span class="eyebrow">02 / THE LAND</span>
+        <h2>ROOTED<br><em>IN NATURE.</em></h2>
+        <p>Fields, harvests, and views of the Great Rift Valley. A glimpse into the land surrounding Camp Jua.</p>
+      </div>
+
+      <div class="photo-grid">
+        <figure class="photo-card wide">
+          <img loading="lazy" src="./static/img/phenominal_Panaromicview ofmtlongonot of thegreat rift valey.jfif" alt="Panoramic landscape of Mount Longonot and the Great Rift Valley">
+          <figcaption>01 / THE GREAT RIFT VALLEY</figcaption>
+        </figure>
+        <figure class="photo-card tall">
+          <img loading="lazy" src="./static/img/farmwithlongonot in the background.jfif" alt="Farm at Camp Jua with Mount Longonot in the background">
+          <figcaption>02 / FARMING BENEATH LONGONOT</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img loading="lazy" src="./static/img/colardGreens.jfif" alt="Harvesting leafy greens">
+          <figcaption>03 / FROM THE FARM</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img loading="lazy" src="./static/img/springonionharvestatcampjuafarms.jfif" alt="Fresh spring onion harvest">
+          <figcaption>04 / FRESHLY HARVESTED</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img loading="lazy" src="./static/img/fromfamrtofrk.jfif" alt="Fresh produce beside the Camp Jua building">
+          <figcaption>05 / FARM TO FORK</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="garden section-pad" id="garden">
+      <div class="section-heading">
+        <span class="eyebrow">03 / THE LIVING GARDEN</span>
+        <h2>GROWING<br><em>KNOWLEDGE.</em></h2>
+        <p>A botanical field journal of the plants, flowers and crops photographed at Camp Jua. Local and scientific names will be added as they are verified.</p>
+      </div>
+      <div class="garden-grid" id="garden-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>JUA ✳</span>
+    <p>THE STORY IS STILL GROWING.</p>
+    <a href="index.html">BACK TO JUA ↗</a>
+  </footer>
+</body>
+</html>
